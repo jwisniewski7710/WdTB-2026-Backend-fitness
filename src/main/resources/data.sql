@@ -11,13 +11,13 @@ insert into user_account (email, display_name, role, created_at) values
 insert into user_account (email, display_name, role, created_at) values
     ('s816612@student.wroclaw.merito.pl', 'Jakub Wiśniewski', 'USER',    current_timestamp),
     ('s617916@student.wroclaw.merito.pl', 'Piotr Śpiewak',    'USER',    current_timestamp),
-    ('trener@example.com',                'Trener',           'PARTNER', current_timestamp);
+    ('trener@gmail.com',                  'Trener',           'PARTNER', current_timestamp);
 
 -- ===== LAB 02 · trainer =====
 insert into trainer (first_name, last_name, email, specialization, hourly_rate, active) values
-    ('Marta', 'Zielińska', 'marta.zielinska@example.com', 'joga i stretching',    90.00, true),
-    ('Paweł', 'Krawczyk',  'pawel.krawczyk@example.com',  'crossfit i siłownia', 110.00, true),
-    ('Agata', 'Nowicka',   'agata.nowicka@example.com',   'zumba i pilates',      85.50, false);
+    ('Marta', 'Zielińska', 'marta.zielinska@gmail.com',   'joga i stretching',    90.00, true),
+    ('Paweł', 'Krawczyk',  'pawel.krawczyk@gmail.com',    'crossfit i siłownia', 110.00, true),
+    ('Agata', 'Nowicka',   'agata.nowicka@gmail.com',     'zumba i pilates',      85.50, false);
 
 -- ===== LAB 02 · fitness_class =====
 insert into fitness_class (name, category, starts_at, duration_minutes, capacity, room) values
