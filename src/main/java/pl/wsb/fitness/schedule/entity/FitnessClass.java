@@ -40,8 +40,9 @@ public class FitnessClass {
     @Column(name = "capacity", nullable = false)
     private Integer capacity;               // limit miejsc na zajęciach
 
-    @Column(name = "room", nullable = false, length = 40)
-    private String room;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "room_id", nullable = false)
+    private Room room;                      // sala, w której są zajęcia
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "trainer_id", nullable = false)
@@ -51,7 +52,7 @@ public class FitnessClass {
     }
 
     public FitnessClass(String name, ClassCategory category, LocalDateTime startsAt, Integer durationMinutes,
-                        Integer capacity, String room, Trainer trainer) {
+                        Integer capacity, Room room, Trainer trainer) {
         this.name = name;
         this.category = category;
         this.startsAt = startsAt;
@@ -85,7 +86,7 @@ public class FitnessClass {
         return capacity;
     }
 
-    public String getRoom() {
+    public Room getRoom() {
         return room;
     }
 

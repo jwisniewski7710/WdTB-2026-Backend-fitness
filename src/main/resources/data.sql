@@ -19,12 +19,18 @@ insert into trainer (first_name, last_name, email, specialization, hourly_rate, 
     ('Paweł', 'Krawczyk',  'pawel.krawczyk@gmail.com',    'crossfit i siłownia', 110.00, true),
     ('Agata', 'Nowicka',   'agata.nowicka@gmail.com',     'zumba i pilates',      85.50, true);
 
--- ===== LAB 02 · fitness_class ===== (trainer_id: 1 = Marta, 2 = Paweł, 3 = Agata)
-insert into fitness_class (name, category, starts_at, duration_minutes, capacity, room, trainer_id) values
-    ('Poranna joga',        'YOGA',     '2026-11-02 07:30:00', 60, 15, 'Sala A', 1),
-    ('Pilates dla każdego', 'PILATES',  '2026-11-02 18:00:00', 55, 12, 'Sala B', 3),
-    ('CrossFit WOD',        'CROSSFIT', '2026-11-03 19:00:00', 45, 10, 'Strefa funkcjonalna', 2),
-    ('Zumba party',         'ZUMBA',    '2026-11-04 18:30:00', 60, 20, 'Sala A', 3);
+-- ===== LAB 03 · room =====
+insert into room (name, floor, max_people, air_conditioned) values
+    ('Sala A',              1, 20, true),
+    ('Sala B',              1, 12, false),
+    ('Strefa funkcjonalna', 0, 10, true);
+
+-- ===== LAB 02 · fitness_class ===== (room_id: 1 = Sala A, 2 = Sala B, 3 = Strefa funkcjonalna; trainer_id: 1 = Marta, 2 = Paweł, 3 = Agata)
+insert into fitness_class (name, category, starts_at, duration_minutes, capacity, room_id, trainer_id) values
+    ('Poranna joga',        'YOGA',     '2026-11-02 07:30:00', 60, 15, 1, 1),
+    ('Pilates dla każdego', 'PILATES',  '2026-11-02 18:00:00', 55, 12, 2, 3),
+    ('CrossFit WOD',        'CROSSFIT', '2026-11-03 19:00:00', 45, 10, 3, 2),
+    ('Zumba party',         'ZUMBA',    '2026-11-04 18:30:00', 60, 20, 1, 3);
 
 -- ===== LAB 02 · club_member =====
 insert into club_member (first_name, last_name, phone, membership_type, joined_on, street, city, postal_code) values
