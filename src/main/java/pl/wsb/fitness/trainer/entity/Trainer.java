@@ -5,11 +5,15 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import pl.wsb.fitness.schedule.entity.FitnessClass;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
-/** Trener prowadzący zajęcia w klubie. Powiązanie z zajęciami (kto prowadzi) dojdzie relacją na kolejnych zajęciach. */
+/** Trener prowadzący zajęcia w klubie. Lista jego zajęć to druga strona relacji z FitnessClass. */
 @Entity
 @Table(name = "trainer")
 public class Trainer {
@@ -35,6 +39,9 @@ public class Trainer {
 
     @Column(name = "active", nullable = false)
     private Boolean active;                 // trener prowadzi teraz zajęcia
+
+    @OneToMany(mappedBy = "trainer")        // zajęcia tego trenera; kolumna trainer_id jest w tabeli fitness_class
+    private List<FitnessClass> classes = new ArrayList<>();
 
     protected Trainer() {
     }
@@ -75,5 +82,9 @@ public class Trainer {
 
     public Boolean getActive() {
         return active;
+    }
+
+    public List<FitnessClass> getClasses() {
+        return classes;
     }
 }
