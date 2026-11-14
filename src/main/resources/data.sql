@@ -42,3 +42,10 @@ insert into club_member (first_name, last_name, phone, membership_type, joined_o
     ('Katarzyna', 'Mazur',       '601234567', 'MONTHLY', '2026-09-01', 'Legnicka 15/3', 'Wrocław', '53-671', 8),
     ('Tomasz',    'Lewandowski', null,        'STUDENT', '2026-10-05', 'Grunwaldzka 8', 'Wrocław', '50-357', 9),
     ('Ewa',       'Dąbrowska',   '698765432', 'OPEN',    '2026-10-20', null,            null,      null,     null);
+
+-- ===== LAB 03 · class_booking ===== (club_member_id: 1 = Katarzyna, 2 = Tomasz, 3 = Ewa; fitness_class_id: 1 = joga, 2 = pilates, 3 = crossfit, 4 = zumba)
+insert into class_booking (club_member_id, fitness_class_id, booked_at, status) values
+    (1, 1, '2026-10-30 20:15:00', 'ATTENDED'),
+    (1, 4, '2026-10-31 09:00:00', 'BOOKED'),
+    (2, 3, '2026-11-01 12:30:00', 'ATTENDED'),
+    (3, 2, '2026-10-29 18:00:00', 'CANCELLED');
