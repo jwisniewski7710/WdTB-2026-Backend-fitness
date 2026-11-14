@@ -5,14 +5,18 @@ import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import pl.wsb.fitness.account.domain.UserAccount;
 
 import java.time.LocalDate;
 
-/** Klubowicz: osoba, która zapisuje się na zajęcia. Powiązanie z kontem logowania (UserAccount) dojdzie na kolejnych zajęciach. */
+/** Klubowicz: osoba, która zapisuje się na zajęcia. Może mieć konto do logowania (UserAccount). */
 @Entity
 @Table(name = "club_member")
 public class ClubMember {
@@ -40,17 +44,22 @@ public class ClubMember {
     @Embedded
     private Address address;                // klasa wbudowana: ulica, miasto, kod pocztowy
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_account_id")
+    private UserAccount account;            // konto do logowania; klubowicz może go jeszcze nie mieć
+
     protected ClubMember() {
     }
 
     public ClubMember(String firstName, String lastName, String phone, MembershipType membershipType,
-                      LocalDate joinedOn, Address address) {
+                      LocalDate joinedOn, Address address, UserAccount account) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phone = phone;
         this.membershipType = membershipType;
         this.joinedOn = joinedOn;
         this.address = address;
+        this.account = account;
     }
 
     public Long getId() {
@@ -79,5 +88,9 @@ public class ClubMember {
 
     public Address getAddress() {
         return address;
+    }
+
+    public UserAccount getAccount() {
+        return account;
     }
 }

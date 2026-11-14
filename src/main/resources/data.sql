@@ -13,6 +13,11 @@ insert into user_account (email, display_name, role, created_at) values
     ('s617916@student.wroclaw.merito.pl', 'Piotr Śpiewak',    'USER',    current_timestamp),
     ('trener@gmail.com',                  'Trener',           'PARTNER', current_timestamp);
 
+-- ===== LAB 03 · user_account ===== (konta klubowiczów: 8 = Katarzyna, 9 = Tomasz)
+insert into user_account (email, display_name, role, created_at) values
+    ('katarzyna.mazur@gmail.com',    'Katarzyna Mazur',    'USER', current_timestamp),
+    ('tomasz.lewandowski@gmail.com', 'Tomasz Lewandowski', 'USER', current_timestamp);
+
 -- ===== LAB 02 · trainer =====
 insert into trainer (first_name, last_name, email, specialization, hourly_rate, active) values
     ('Marta', 'Zielińska', 'marta.zielinska@gmail.com',   'joga i stretching',    90.00, true),
@@ -32,8 +37,8 @@ insert into fitness_class (name, category, starts_at, duration_minutes, capacity
     ('CrossFit WOD',        'CROSSFIT', '2026-11-03 19:00:00', 45, 10, 3, 2),
     ('Zumba party',         'ZUMBA',    '2026-11-04 18:30:00', 60, 20, 1, 3);
 
--- ===== LAB 02 · club_member =====
-insert into club_member (first_name, last_name, phone, membership_type, joined_on, street, city, postal_code) values
-    ('Katarzyna', 'Mazur',       '601234567', 'MONTHLY', '2026-09-01', 'Legnicka 15/3', 'Wrocław', '53-671'),
-    ('Tomasz',    'Lewandowski', null,        'STUDENT', '2026-10-05', 'Grunwaldzka 8', 'Wrocław', '50-357'),
-    ('Ewa',       'Dąbrowska',   '698765432', 'OPEN',    '2026-10-20', null,            null,      null);
+-- ===== LAB 02 · club_member ===== (user_account_id: 8 = Katarzyna, 9 = Tomasz; Ewa nie ma konta)
+insert into club_member (first_name, last_name, phone, membership_type, joined_on, street, city, postal_code, user_account_id) values
+    ('Katarzyna', 'Mazur',       '601234567', 'MONTHLY', '2026-09-01', 'Legnicka 15/3', 'Wrocław', '53-671', 8),
+    ('Tomasz',    'Lewandowski', null,        'STUDENT', '2026-10-05', 'Grunwaldzka 8', 'Wrocław', '50-357', 9),
+    ('Ewa',       'Dąbrowska',   '698765432', 'OPEN',    '2026-10-20', null,            null,      null,     null);
